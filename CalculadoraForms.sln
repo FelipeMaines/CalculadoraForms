@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculadora.WinApp", "Calculadora.WinApp\Calculadora.WinApp.csproj", "{1679565B-E710-4D1C-AC2F-8037F89B0CDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1679565B-E710-4D1C-AC2F-8037F89B0CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1679565B-E710-4D1C-AC2F-8037F89B0CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1679565B-E710-4D1C-AC2F-8037F89B0CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1679565B-E710-4D1C-AC2F-8037F89B0CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60C529C6-CA08-4E2C-9E6A-A3B33498DF34}
+	EndGlobalSection
+EndGlobal
