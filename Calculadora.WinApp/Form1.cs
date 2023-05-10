@@ -101,7 +101,13 @@ namespace Calculadora.WinApp
 
         private void buttonC_Click(object sender, EventArgs e)
         {
-
+            calculo.primeiroNumero = 0;
+            calculo.segundoNumero = 0;
+            strPrimeiroNumero = string.Empty;
+            strSegundoNumero = string.Empty;
+            calculo.mostrarCalculo = string.Empty;
+            lista.Items.Clear();
+            qualNumero = false;
         }
 
         private void buttonNumero_Click(object sender, EventArgs e)
