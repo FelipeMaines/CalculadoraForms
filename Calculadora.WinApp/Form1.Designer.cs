@@ -47,6 +47,7 @@
             buttonC = new Button();
             buttonCE = new Button();
             lista = new ListBox();
+            resultados = new ListBox();
             SuspendLayout();
             // 
             // adicao
@@ -239,11 +240,22 @@
             lista.TabIndex = 20;
             lista.SelectedIndexChanged += lista_SelectedIndexChanged;
             // 
+            // resultados
+            // 
+            resultados.FormattingEnabled = true;
+            resultados.ItemHeight = 15;
+            resultados.Location = new Point(324, 75);
+            resultados.Name = "resultados";
+            resultados.Size = new Size(88, 244);
+            resultados.TabIndex = 21;
+            resultados.SelectedIndexChanged += resultados_SelectedIndexChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(834, 457);
+            Controls.Add(resultados);
             Controls.Add(lista);
             Controls.Add(buttonCE);
             Controls.Add(buttonC);
@@ -292,5 +304,6 @@
         private Button buttonC;
         private Button buttonCE;
         private ListBox lista;
+        private ListBox resultados;
     }
 }

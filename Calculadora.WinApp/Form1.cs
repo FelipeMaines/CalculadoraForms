@@ -22,6 +22,7 @@ namespace Calculadora.WinApp
             calculo.operacao = " + ";
             calculo.mostrarCalculo += calculo.operacao;
             qualNumero = true;
+            lista.Items.Clear();
 
             lista.Items.Add(calculo.mostrarCalculo);
         }
@@ -31,6 +32,7 @@ namespace Calculadora.WinApp
             calculo.operacao = " - ";
             calculo.mostrarCalculo += calculo.operacao;
             qualNumero = true;
+            lista.Items.Clear();
 
             lista.Items.Add(calculo.mostrarCalculo);
         }
@@ -40,6 +42,7 @@ namespace Calculadora.WinApp
             calculo.operacao = " / ";
             calculo.mostrarCalculo += calculo.operacao;
             qualNumero = true;
+            lista.Items.Clear();
 
             lista.Items.Add(calculo.mostrarCalculo);
         }
@@ -49,7 +52,7 @@ namespace Calculadora.WinApp
             calculo.operacao = " * ";
             calculo.mostrarCalculo += calculo.operacao;
             qualNumero = true;
-
+            lista.Items.Clear();
             lista.Items.Add(calculo.mostrarCalculo);
         }
 
@@ -57,32 +60,35 @@ namespace Calculadora.WinApp
         {
             if (!validacaoNull(calculo.primeiroNumero, calculo.segundoNumero))
             {
+                int resultado = 0;
+
                 if (calculo.operacao == " + ")
                 {
-                    int resultado = calculo.somar(calculo.primeiroNumero, calculo.segundoNumero);
+                    resultado = calculo.somar(calculo.primeiroNumero, calculo.segundoNumero);
                     lista.Items.Add(resultado);
                 }
 
                 else if (calculo.operacao == " - ")
                 {
-                    int resultado = calculo.subtrair(calculo.primeiroNumero, calculo.segundoNumero);
+                    resultado = calculo.subtrair(calculo.primeiroNumero, calculo.segundoNumero);
                     lista.Items.Add(resultado);
                 }
 
                 else if (calculo.operacao == " * ")
                 {
-                    int resultado = calculo.multiplicar(calculo.primeiroNumero, calculo.segundoNumero);
+                    resultado = calculo.multiplicar(calculo.primeiroNumero, calculo.segundoNumero);
                     lista.Items.Add(resultado);
                 }
 
                 else if (calculo.operacao == " / ")
                 {
-                    int resultado = calculo.dividir(calculo.primeiroNumero, calculo.segundoNumero);
+                    resultado = calculo.dividir(calculo.primeiroNumero, calculo.segundoNumero);
                     lista.Items.Add(resultado);
                 }
-
-
+                
+                resultados.Items.Add(calculo.primeiroNumero + " " + calculo.operacao + " " + calculo.segundoNumero + " = " + resultado);
             }
+
             else
             {
                 MessageBox.Show("Os dois itens devem ter sido preenchido");
@@ -94,10 +100,10 @@ namespace Calculadora.WinApp
 
         }
 
-        //public override string ToString()
-        //{
-        //    return $"Primeiro numero: {calculo.primeiroNumero}, Segundo numero: {calculo.segundoNumero}, Operacao: {calculo.operacao}, Resultado: {calculo.resultado}";
-        //}
+        public override string ToString()
+        {
+            return $"Primeiro numero: {calculo.primeiroNumero}, Segundo numero: {calculo.segundoNumero}, Operacao: {calculo.operacao}, Resultado: {calculo.resultado}";
+        }
 
         private void buttonC_Click(object sender, EventArgs e)
         {
@@ -133,7 +139,7 @@ namespace Calculadora.WinApp
                 calculo.mostrarCalculo = strPrimeiroNumero + calculo.operacao + strSegundoNumero;
             }
 
-
+            lista.Items.Clear();
             lista.Items.Add(calculo.mostrarCalculo);
         }
 
@@ -166,6 +172,11 @@ namespace Calculadora.WinApp
         private void buttonCE_Click(object sender, EventArgs e)
         {
             lista.Items.Clear();
+        }
+
+        private void resultados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
