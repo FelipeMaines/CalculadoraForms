@@ -9,7 +9,7 @@ namespace Calculadora.WinApp
         public string strPrimeiroNumero;
         public string strSegundoNumero;
         public bool qualNumero = false;
-        public string mostrarCalculo= "";
+        public string mostrarCalculo = "";
         public string opercao = "";
         public Form1()
         {
@@ -19,7 +19,7 @@ namespace Calculadora.WinApp
 
         private void adicao_Click(object sender, EventArgs e)
         {
-            calculo.operacao =  " + ";
+            calculo.operacao = " + ";
             calculo.mostrarCalculo += calculo.operacao;
             qualNumero = true;
 
@@ -57,27 +57,31 @@ namespace Calculadora.WinApp
         {
             if (!validacaoNull(calculo.primeiroNumero, calculo.segundoNumero))
             {
-                if (calculo.operacao == "+")
+                if (calculo.operacao == " + ")
                 {
-                    calculo.somar(calculo.primeiroNumero, calculo.segundoNumero);
+                    int resultado = calculo.somar(calculo.primeiroNumero, calculo.segundoNumero);
+                    lista.Items.Add(resultado);
                 }
 
-                else if (calculo.operacao == "-")
+                else if (calculo.operacao == " - ")
                 {
-                    calculo.subtrair(calculo.primeiroNumero, calculo.segundoNumero);
+                    int resultado = calculo.subtrair(calculo.primeiroNumero, calculo.segundoNumero);
+                    lista.Items.Add(resultado);
                 }
 
-                else if (calculo.operacao == "*")
+                else if (calculo.operacao == " * ")
                 {
-                    calculo.multiplicar(calculo.primeiroNumero, calculo.segundoNumero);
+                    int resultado = calculo.multiplicar(calculo.primeiroNumero, calculo.segundoNumero);
+                    lista.Items.Add(resultado);
                 }
 
-                else if (calculo.operacao == "/")
+                else if (calculo.operacao == " / ")
                 {
-                    calculo.dividir(calculo.primeiroNumero, calculo.segundoNumero);
+                    int resultado = calculo.dividir(calculo.primeiroNumero, calculo.segundoNumero);
+                    lista.Items.Add(resultado);
                 }
 
-                
+
             }
             else
             {
@@ -90,195 +94,39 @@ namespace Calculadora.WinApp
 
         }
 
-        public override string ToString()
-        {
-            return $"Primeiro numero: {calculo.primeiroNumero}, Segundo numero: {calculo.segundoNumero}, Operacao: {calculo.operacao}, Resultado: {calculo.resultado}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"Primeiro numero: {calculo.primeiroNumero}, Segundo numero: {calculo.segundoNumero}, Operacao: {calculo.operacao}, Resultado: {calculo.resultado}";
+        //}
 
         private void buttonC_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonNumero_Click(object sender, EventArgs e)
         {
             if (!qualNumero)
             {
-                strPrimeiroNumero += button1.Text;
+                if (sender is Button btn)
+                {
+                    strPrimeiroNumero += btn.Text;
+                }
                 calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
                 calculo.mostrarCalculo = strPrimeiroNumero;
-                
+
             }
             else
             {
-                strSegundoNumero += button1.Text;
+                if (sender is Button btn)
+                {
+                    strSegundoNumero += btn.Text;
+                }
                 calculo.segundoNumero = int.Parse(strSegundoNumero);
                 mostrarCalculo += strSegundoNumero;
-                calculo.mostrarCalculo = strSegundoNumero;
+                calculo.mostrarCalculo = strPrimeiroNumero + calculo.operacao + strSegundoNumero;
             }
 
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button2.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button2.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button3.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button3.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button4.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button4.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button5.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button5.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button6.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button6.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button7.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button7.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo+= strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button8.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button8.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button9.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-            else
-            {
-                strSegundoNumero += button9.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
-
-            lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void button0_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += button0.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-                calculo.mostrarCalculo = strPrimeiroNumero;
-            }
-
-            else
-            {
-                strSegundoNumero += button0.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-                calculo.mostrarCalculo = strSegundoNumero;
-            }
 
             lista.Items.Add(calculo.mostrarCalculo);
         }
@@ -309,7 +157,10 @@ namespace Calculadora.WinApp
                 return true;
         }
 
-       
+        private void buttonCE_Click(object sender, EventArgs e)
+        {
+            lista.Items.Clear();
+        }
     }
 
 }
