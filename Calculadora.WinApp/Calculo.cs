@@ -9,33 +9,34 @@ namespace Calculadora.WinApp
 {
     public class Calculo
     {
-        public int primeiroNumero;
-        public int segundoNumero;
-        public int resultado;
+        public decimal primeiroNumero;
+        public decimal segundoNumero;
+        public decimal resultado;
         public string operacao;
         public string mostrarCalculo;
+        public List<Calculo> listaDeCalculos = new List<Calculo>();
 
         public Calculo()
         {
             
         }
 
-        public int somar(int a, int b)
+        public decimal somar(decimal a, decimal b)
         {
             return a + b;
         }
 
-        public int subtrair(int a, int b)
+        public decimal subtrair(decimal a, decimal b)
         {
             return a - b;
         }
 
-        public int multiplicar(int a, int b)
+        public decimal multiplicar(decimal a, decimal b)
         {
             return a * b;
         }
 
-        public int dividir(int a, int b)
+        public decimal dividir(decimal a, decimal b)
         {
             if(b != 0)
                 return a / b;

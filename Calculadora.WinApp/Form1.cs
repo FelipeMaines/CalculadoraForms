@@ -11,9 +11,9 @@ namespace Calculadora.WinApp
         public bool qualNumero = false;
         public string mostrarCalculo = "";
         public string opercao = "";
-        public Form1()
+        public Form1(Calculo calc)
         {
-            this.calculo = new Calculo();
+            this.calculo = calc;
             InitializeComponent();
         }
 
@@ -58,10 +58,13 @@ namespace Calculadora.WinApp
 
         private void buttonIgual_Click(object sender, EventArgs e)
         {
-            if (!validacaoNull(calculo.primeiroNumero, calculo.segundoNumero))
-            {
-                int resultado = 0;
+            decimal resultado = 0;
 
+            calculo.primeiroNumero = decimal.Parse(strPrimeiroNumero);
+            calculo.segundoNumero = decimal.Parse(strSegundoNumero);
+
+            if (!string.IsNullOrEmpty(strPrimeiroNumero) && !string.IsNullOrEmpty(strSegundoNumero))
+            {
                 if (calculo.operacao == " + ")
                 {
                     resultado = calculo.somar(calculo.primeiroNumero, calculo.segundoNumero);
@@ -85,27 +88,28 @@ namespace Calculadora.WinApp
                     resultado = calculo.dividir(calculo.primeiroNumero, calculo.segundoNumero);
                     lista.Items.Add(resultado);
                 }
-                
+
                 resultados.Items.Add(calculo.primeiroNumero + " " + calculo.operacao + " " + calculo.segundoNumero + " = " + resultado);
+
+                calculo.resultado = resultado;
+                this.calculo = new Calculo();
+                Limpar();
             }
 
             else
             {
-                MessageBox.Show("Os dois itens devem ter sido preenchido");
+                MessageBox.Show("Faltou dados!");
+                Limpar();
             }
-        }
 
-        private void lista_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public override string ToString()
-        {
-            return $"Primeiro numero: {calculo.primeiroNumero}, Segundo numero: {calculo.segundoNumero}, Operacao: {calculo.operacao}, Resultado: {calculo.resultado}";
         }
 
         private void buttonC_Click(object sender, EventArgs e)
+        {
+            Limpar();
+        }
+
+        private void Limpar()
         {
             calculo.primeiroNumero = 0;
             calculo.segundoNumero = 0;
@@ -118,13 +122,18 @@ namespace Calculadora.WinApp
 
         private void buttonNumero_Click(object sender, EventArgs e)
         {
+            AdicionarValor(sender);
+        }
+
+        private void AdicionarValor(object sender)
+        {
             if (!qualNumero)
             {
                 if (sender is Button btn)
                 {
                     strPrimeiroNumero += btn.Text;
                 }
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
+
                 calculo.mostrarCalculo = strPrimeiroNumero;
 
             }
@@ -134,39 +143,13 @@ namespace Calculadora.WinApp
                 {
                     strSegundoNumero += btn.Text;
                 }
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
+
                 mostrarCalculo += strSegundoNumero;
                 calculo.mostrarCalculo = strPrimeiroNumero + calculo.operacao + strSegundoNumero;
             }
 
             lista.Items.Clear();
             lista.Items.Add(calculo.mostrarCalculo);
-        }
-
-        private void buttonPonto_Click(object sender, EventArgs e)
-        {
-            if (!qualNumero)
-            {
-                strPrimeiroNumero += buttonPonto.Text;
-                calculo.primeiroNumero = int.Parse(strPrimeiroNumero);
-
-
-            }
-
-            else
-            {
-                strSegundoNumero += buttonPonto.Text;
-                calculo.segundoNumero = int.Parse(strSegundoNumero);
-            }
-        }
-
-        private bool validacaoNull(int n1, int n2)
-        {
-            if (n1 != null && n2 != null)
-                return false;
-
-            else
-                return true;
         }
 
         private void buttonCE_Click(object sender, EventArgs e)
@@ -178,6 +161,8 @@ namespace Calculadora.WinApp
         {
 
         }
+
+
     }
 
 }
